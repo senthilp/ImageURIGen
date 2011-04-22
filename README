@@ -47,6 +47,6 @@ avoided if caching mechanism is setup
 4. Cache headers sent in the urigen response can be tweaked based on use 
 Cases to maximize the usage of browser cache
 
-Limitation: IE6 & IE7 doesn’t have a good way of supporting image data URI, a
+Limitation: IE6 & IE7 do not directly support image data URI, a
 Possible techniques is explained here http://www.phpied.com/inline-mhtml-data-uris/
 but I would not recommend it.   
