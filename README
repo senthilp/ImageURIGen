@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------------
  About
 -------------------------------------------------------------------------------
+Prerequisites: PHP5, php5-curl package, apache  
 
 ImageURIGen (Image Data URI generator) is a simple web service which generates
 base64 encoded image data URI response in JSON format for a given set of image 
