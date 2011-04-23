@@ -3,23 +3,23 @@
 -------------------------------------------------------------------------------
 
 ImageURIGen (Image Data URI generator) is a simple web service which generates
-base64 encoded image data URI JSON response for a given set of image URLs. The
-image URLs can be passed as HTTP GET or POST query string parameters to the
-service. Internally the web service retrieves the image URLs from the query
-string, makes curl (HTTP) calls to the image hosting servers, does a base64
-encoding on the curl response, builds a JSON array and sends back the JSON 
-response. 
+base64 encoded image data URI response in JSON format for a given set of image 
+URLs. The image URLs can be passed as HTTP GET or POST query string parameters.
+Internally the web service reads the image URLs from the query string, makes 
+curl (HTTP) calls to the image hosting servers, does a base64 encoding on the 
+curl response, builds a JSON array and sends back the JSON response. 
 
 This technique would be extremely performant efficient when multiple HTTP 
-calls are made from the browser to fetch dynamic images which cannot be 
-previously sprited. Typical use cases would be displaying buddy images in 
-a chat client or social applications, images of items uploaded by users in
-commerce sites etc. which will keep changing very frequently. Instead of 
-making these individual HTTP calls for images all of them can be combined
-into 1 request to the ImageURIGen web service which will return the complete 
-list of data URIs which can then be set using JavaScript. Ideally all 
-dynamic images coming below fold in the page can use this technique. Even
-servers can call this webservice and directly build the page with URIs. 
+calls need to be made from the browser to fetch dynamic images which cannot 
+be previously sprited. Typical use cases would be displaying buddy images 
+in a chat client or social applications, images of items uploaded by users 
+in commerce sites, photo sharing sites etc. which are dynamic and decided on
+run time. Now with this technique, instead of making individual HTTP calls 
+for images all of them can be combined into a single request to the 
+ImageURIGen web service which will return the complete list of data URIs,
+which can then be set using JavaScript. Ideally all dynamic images coming 
+below fold in the page can leverage this technique. Even servers can call 
+this webservice directly and build the page with URIs. 
 
 Sample request and response
 Request:
@@ -36,17 +36,18 @@ Enhancements:
 an efficient way and can result in slow responsiveness. These calls can 
 be made parallel using libraries like Pluton 
 http://markdelany.github.com/Pluton/1.0/index.html
-2. A server side caching mechanism can be setup inorder to avoid CURL calls
-for the same images again. The image URLs can be maintained in a hash and
-also cache busting mechanism needs to be in place based on the image 
-response headers
+2. The web service needs a caching mechanism to avoid CURL calls for the 
+same images again. The image URLs can be maintained in a hash with the
+corresponding URIs. Also a cache busting mechanism needs to be in place 
+based on the image response headers
 3. If images are hosted by the same publisher who hosts the web service then
-The images can be maintained in the same web server as the web service (or 
+the images can be maintained in the same web server as the web service (or 
 vice versa) and totally avoid CURL calls. Subsequent disk reads can alos be 
 avoided if caching mechanism is setup
-4. Cache headers sent in the urigen response can be tweaked based on use 
-Cases to maximize the usage of browser cache
+4. Cache headers sent in the final web service JSON response itself can be
+tweaked in accordance with the actual image cache headers to maximize the 
+usage of browser cache
 
 Limitation: IE6 & IE7 do not directly support image data URI, a
-Possible techniques is explained here http://www.phpied.com/inline-mhtml-data-uris/
+possible technique is explained here http://www.phpied.com/inline-mhtml-data-uris/
 but I would not recommend it.   
