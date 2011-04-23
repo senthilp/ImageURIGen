@@ -36,10 +36,10 @@ Enhancements:
 an efficient way and can result in slow responsiveness. These calls can 
 be made parallel using libraries like Pluton 
 http://markdelany.github.com/Pluton/1.0/index.html
-2. The web service needs a caching mechanism to avoid CURL calls for the 
-same images again. The image URLs can be maintained in a hash with the
-corresponding URIs. Also a cache busting mechanism needs to be in place 
-based on the image response headers
+2. The web service needs a caching mechanism to avoid repetitive CURL 
+calls for the same images again. The image URLs can be maintained in a 
+hash with the corresponding URIs. Also a cache busting mechanism needs 
+to be in place based on the image response headers
 3. If images are hosted by the same publisher who hosts the web service then
 the images can be maintained in the same web server as the web service (or 
 vice versa) and totally avoid CURL calls. Subsequent disk reads can alos be 
