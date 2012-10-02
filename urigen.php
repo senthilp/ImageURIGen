@@ -1,5 +1,10 @@
 <?php
+
 // Image URI Generator
+
+// Copyright 2012, Senthil Padmanabhan
+// Released under the MIT License
+// http://www.opensource.org/licenses/MIT
 
 $query = array(); // query list
 $response = array(); // response object
